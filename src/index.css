@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+  background-color: #15161a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  color: #e4e6eb;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #1c1e24;
+}
+::-webkit-scrollbar-thumb {
+  background: #34363f;
+  border-radius: 6px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #44474f;
+}
+
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.studio-panel {
+  background-color: #1c1e24;
+  border: 1px solid #2c2f38;
+  border-radius: 10px;
+}
+
+.studio-label {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #8b8f9c;
+}
+
+.studio-input {
+  background-color: #101114;
+  border: 1px solid #2c2f38;
+  border-radius: 6px;
+  color: #e4e6eb;
+  font-size: 12px;
+  padding: 3px 6px;
+}
+.studio-input:focus {
+  outline: none;
+  border-color: #ff8a3d;
+}
+
+.studio-btn {
+  background-color: #22242b;
+  border: 1px solid #2c2f38;
+  border-radius: 6px;
+  color: #e4e6eb;
+  font-size: 11px;
+  padding: 5px 10px;
+  transition: all 0.12s ease;
+  cursor: pointer;
+}
+.studio-btn:hover {
+  background-color: #2c2f38;
+  border-color: #3c3f4a;
+}
+.studio-btn:active {
+  transform: translateY(1px);
+}
+.studio-btn.active {
+  background-color: #ff8a3d;
+  border-color: #ff8a3d;
+  color: #15161a;
+  font-weight: 600;
+}
+.studio-btn.danger:hover {
+  border-color: #ff5c5c;
+  color: #ff5c5c;
+}
