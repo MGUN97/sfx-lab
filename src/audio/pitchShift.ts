@@ -60,10 +60,16 @@ export async function pitchShiftBuffer(source: AudioBuffer, semitones: number): 
   const soundtouch = new SoundTouch();
 
   // Guard against minor API-surface differences between soundtouchjs versions.
-  if ('pitchSemitones' in soundtouch) {
-    soundtouch.pitchSemitones = semitones;
+  // Cast through `any` here on purpose — our .d.ts declares `pitchSemitones`
+  // as always present, which would make TypeScript treat the "else" branch
+  // below as unreachable (narrowing to `never`) if we checked `soundtouch`
+  // directly. This is a runtime feature-check against the *actual* installed
+  // library, not something the static types can express safely.
+  const soundtouchAny = soundtouch as unknown as Record<string, unknown>;
+  if ('pitchSemitones' in soundtouchAny) {
+    soundtouchAny.pitchSemitones = semitones;
   } else {
-    soundtouch.pitch = Math.pow(2, semitones / 12);
+    soundtouchAny.pitch = Math.pow(2, semitones / 12);
   }
   soundtouch.tempo = 1; // duration-preserving: only pitch changes, speed stays put
 
